@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaui Booking Options</title>
+    <title>30 Distinct Zaui Booking Options</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configure Tailwind for Inter font -->
@@ -17,19 +17,23 @@
                     colors: {
                         'zaui-primary': '#0070f3',
                         'zaui-dark': '#1e293b',
+                        'zaui-teal': '#00c8c8',
                     }
                 }
             }
         }
     </script>
-    <!-- Zaui Embedded Booking API Script (Moved to head for better timing) -->
+    <!-- Zaui Embedded Booking API Script -->
     <script src="https://Zauishuttle.zaui.net/themes/default/js/zaui-embed-api-v1.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Base styles for the iframe container */
+        /* Base styles for the iframe container - INCREASED HEIGHT */
         .zaui-widget-container {
             width: 100%;
-            height: 550px; /* Standard height for usability */
+            height: 650px; /* Increased default height to prevent cutoff */
             overflow: hidden;
+            border-radius: 0.75rem; /* Consistent rounding */
         }
         .zaui-widget-wrapper {
             width: 100%;
@@ -64,168 +68,563 @@
             border-radius: 1rem;
             position: relative;
         }
+        /* Design 3 Modal height fix */
+        .modal-content .zaui-widget-container {
+            height: 650px; /* Ensures the modal's internal widget is tall enough */
+        }
+
+
+        /* Keyframes for Design 18: Animated Pulse */
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(0, 112, 243, 0.5), 0 0 10px rgba(0, 112, 243, 0.3); }
+            100% { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
+        }
+        .pulse-card {
+            animation: pulse-shadow 4s infinite ease-in-out;
+        }
+        
+        /* Custom height for design 15 (Split Layout) - INCREASED HEIGHT */
+        .split-layout-height {
+            height: 600px; /* Increased to prevent cutoff */
+        }
+
+        /* Custom style for design 16 (Pricing Card) */
+        .pricing-card-bg {
+            background-image: linear-gradient(135deg, #f0f9ff 0%, #cbe9ff 100%);
+        }
+
+        /* NEW: Styles for card header images (Designs 1, 2, 9) */
+        .card-header-image {
+            width: 100%;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Crop to fill */
+            border-radius: 0.75rem 0.75rem 0 0; /* Match card rounding */
+            margin-bottom: 1rem; /* Space below image */
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans p-6 md:p-10">
+<body class="bg-gray-100 font-sans">
 
-    <h1 class="text-4xl font-bold mb-10 text-center text-gray-800">10 Distinct Zaui Booking Options</h1>
-
-    <!-- Grid Container for all designs -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
-
-        <!-- Design 1: Classic Elevated Card -->
-        <div class="space-y-4" id="design-1">
-            <h2 class="text-2xl font-semibold text-gray-700">1. Classic Elevated Card</h2>
-            <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-100 zaui-widget-container">
-                <p class="text-lg font-medium mb-3 text-zaui-primary">Book Your Shuttle Now</p>
-                <div class="zaui-widget-wrapper">
-                    <iframe id="zaui-widget-journey-iframe-1" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
-                </div>
-            </div>
+    <!-- === NEW HERO SECTION === -->
+    <div class="relative bg-zaui-dark text-white shadow-2xl mb-12">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/13013742058772274781" alt="Canadian Rockies Hero Image" class="w-full h-full object-cover opacity-30">
         </div>
-
-        <!-- Design 2: Dark Mode Traveler -->
-        <div class="space-y-4" id="design-2">
-            <h2 class="text-2xl font-semibold text-white">2. Dark Mode Traveler</h2>
-            <div class="bg-zaui-dark p-6 rounded-xl shadow-[0_0_20px_rgba(0,112,243,0.7)] zaui-widget-container">
-                <p class="text-lg font-medium mb-3 text-green-400">Secure Travel Booking</p>
-                <div class="zaui-widget-wrapper">
-                    <iframe id="zaui-widget-journey-iframe-2" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
-                </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto p-6 md:p-10 flex flex-col md:flex-row items-center justify-between">
+            <!-- Logo and Title -->
+            <div class="text-center md:text-left">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/906851702128416931" alt="Zaui Logo" class="w-32 h-auto mb-4 mx-auto md:mx-0 bg-white p-2 rounded-lg">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-2">Zaui Booking Engine</h1>
+                <p class="text-xl md:text-2xl font-light text-gray-300">30 Distinct Design Implementations</p>
             </div>
-        </div>
-
-        <!-- Design 3: Floating Action Modal (Requires JS) -->
-        <div class="space-y-4" id="design-3">
-            <h2 class="text-2xl font-semibold text-gray-700">3. Floating Action Modal</h2>
-            <div class="bg-white p-6 rounded-xl shadow-lg h-[250px] flex flex-col justify-center items-center">
-                <p class="mb-4 text-gray-500">The widget is hidden and opens on click.</p>
-                <button onclick="document.getElementById('booking-modal').style.display='flex'" class="px-6 py-3 bg-red-600 text-white font-bold rounded-full shadow-lg hover:bg-red-700 transition transform hover:scale-105">
-                    START BOOKING
+            <!-- CTA Button (Optional) -->
+            <div class="mt-6 md:mt-0">
+                <button class="px-8 py-3 bg-zaui-primary text-white font-bold rounded-full shadow-lg hover:bg-blue-600 transition transform hover:scale-105">
+                    Contact Sales
                 </button>
             </div>
-            
-            <!-- Modal Structure (Hidden by default) -->
-            <div class="modal-overlay" id="booking-modal">
-                <div class="modal-content">
-                    <button onclick="document.getElementById('booking-modal').style.display='none'" class="absolute top-3 right-5 text-gray-700 hover:text-red-600 text-2xl font-bold z-10">&times;</button>
-                    <div class="zaui-widget-container h-[550px] w-full">
+        </div>
+    </div>
+    <!-- === END HERO SECTION === -->
+
+    <!-- Main Content Area -->
+    <div class="p-6 md:p-10">
+
+        <!-- === SECTION 1: ORIGINAL 20 DESIGNS === -->
+        <h1 class="text-4xl font-extrabold mb-12 text-center text-gray-900">20 Distinct Booking Options</h1>
+
+        <!-- Grid Container for all designs -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+
+            <!-- Design 1: Classic Elevated Card (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-1">
+                <h2 class="text-2xl font-bold text-gray-700">1. Classic Elevated Card</h2>
+                <div class="bg-white rounded-xl shadow-2xl border border-gray-100">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqETrf3hSaRkjxgDOUenLKFS2NsCsvmb3YM-FsHu_Wstahe1sCRfc0nLT2wANjcRqWrM&usqp=CAU" alt="Whistler Village" class="card-header-image">
+                    <div class="p-6 zaui-widget-container h-[600px]">
+                        <p class="text-lg font-medium mb-3 text-zaui-primary">Book Your Shuttle Now</p>
                         <div class="zaui-widget-wrapper">
-                            <iframe id="zaui-widget-journey-iframe-3" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                            <iframe id="zaui-widget-journey-iframe-1" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Design 4: Side Panel Quick Booking (Fixed Small Width) -->
-        <div class="space-y-4" id="design-4">
-            <h2 class="text-2xl font-semibold text-gray-700">4. Side Panel Quick Booking</h2>
-            <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-yellow-500 w-full max-w-sm mx-auto zaui-widget-container h-[600px]">
-                <p class="text-sm font-light uppercase text-yellow-600 mb-2">Express Reservation</p>
-                <div class="zaui-widget-wrapper">
-                    <iframe id="zaui-widget-journey-iframe-4" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
-                </div>
-            </div>
-        </div>
-
-        <!-- Design 5: Minimalist Footer Block -->
-        <div class="space-y-4" id="design-5">
-            <h2 class="text-2xl font-semibold text-gray-700">5. Minimalist Footer Block</h2>
-            <div class="border-t border-b border-gray-300 py-6 zaui-widget-container">
-                <p class="text-center text-sm mb-3 text-gray-500">Powered by Zaui | Find your trip below</p>
-                <div class="zaui-widget-wrapper">
-                    <iframe id="zaui-widget-journey-iframe-5" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
-                </div>
-            </div>
-        </div>
-
-        <!-- Design 6: Premium Booking (Gradient Frame) -->
-        <div class="space-y-4" id="design-6">
-            <h2 class="text-2xl font-semibold text-gray-700">6. Premium Booking Frame</h2>
-            <!-- Outer div for the custom gradient border -->
-            <div class="p-1.5 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-xl shadow-xl">
-                <!-- Inner div for the content -->
-                <div class="bg-white p-5 rounded-lg zaui-widget-container">
-                    <p class="text-lg font-bold mb-3 text-purple-700">VIP Transport Service</p>
-                    <div class="zaui-widget-wrapper">
-                        <iframe id="zaui-widget-journey-iframe-6" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+            <!-- Design 2: Dark Mode Traveler (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-2">
+                <h2 class="text-2xl font-bold text-gray-700">2. Dark Mode Traveler</h2>
+                <div class="bg-gray-900 rounded-xl shadow-[0_0_20px_rgba(0,112,243,0.4)]">
+                    <img src="https://whereintheworldisnina.com/wp-content/uploads/2021/12/icefields-parkway-banff-national-park.jpeg" alt="Icefields Parkway" class="card-header-image">
+                    <div class="p-6 zaui-widget-container h-[600px]">
+                        <p class="text-lg font-medium mb-3 text-cyan-400">Secure Travel Booking</p>
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-2" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Design 7: Mobile First / Full Width Banner -->
-        <div class="space-y-4 lg:col-span-2 xl:col-span-3" id="design-7">
-            <h2 class="text-2xl font-semibold text-gray-700">7. Full-Width Mobile Banner</h2>
-            <div class="bg-indigo-700 p-4 md:p-8 rounded-lg shadow-inner w-full zaui-widget-container h-[450px]">
-                <p class="text-xl font-light text-white mb-4 text-center">Your Ride is Just a Tap Away.</p>
-                <div class="zaui-widget-wrapper bg-white rounded-lg">
-                    <iframe id="zaui-widget-journey-iframe-7" class="zaui-widget rounded-lg" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
-                </div>
-            </div>
-        </div>
 
-        <!-- Design 8: Stacked Form Context -->
-        <div class="space-y-4" id="design-8">
-            <h2 class="text-2xl font-semibold text-gray-700">8. Stacked Form Context</h2>
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-blue-200">
-                <p class="text-xl font-bold text-blue-800 mb-4">Step 2: Enter Details</p>
-                <!-- Mock Step 1 -->
-                <div class="border-b pb-4 mb-4">
-                    <p class="text-sm font-medium text-gray-500">Step 1: Destination Selected (Tokyo)</p>
-                </div>
-
-                <!-- Zaui Widget as Step 2 -->
-                <div class="zaui-widget-container h-[500px]">
-                    <div class="zaui-widget-wrapper">
-                        <iframe id="zaui-widget-journey-iframe-8" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
-                    </div>
+            <!-- Design 3: Floating Action Modal -->
+            <div class="space-y-4" id="design-3">
+                <h2 class="text-2xl font-bold text-gray-700">3. Floating Action Modal</h2>
+                <div class="bg-white p-6 rounded-xl shadow-lg h-[250px] flex flex-col justify-center items-center">
+                    <p class="mb-4 text-gray-500">The widget opens as a responsive modal overlay.</p>
+                    <button id="open-booking-modal-btn" class="px-6 py-3 bg-red-600 text-white font-bold rounded-full shadow-xl hover:bg-red-700 transition transform hover:scale-105">
+                        START BOOKING
+                    </button>
                 </div>
                 
-                <!-- Mock Step 3 -->
-                <div class="pt-4 mt-4 border-t">
-                    <button disabled class="w-full bg-gray-300 text-gray-600 py-2 rounded-lg cursor-not-allowed">Continue to Payment (Disabled)</button>
+                <!-- Modal Structure (Hidden by default) -->
+                <div class="modal-overlay" id="booking-modal">
+                    <div class="modal-content">
+                        <button id="close-booking-modal-btn" class="absolute top-3 right-5 text-gray-700 hover:text-red-600 text-3xl font-light z-10 leading-none">&times;</button>
+                        <div class="zaui-widget-container h-[650px] w-full">
+                            <div class="zaui-widget-wrapper">
+                                <iframe id="zaui-widget-journey-iframe-3" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Design 9: Rustic/Earthy Theme -->
-        <div class="space-y-4" id="design-9">
-            <h2 class="text-2xl font-semibold text-gray-700">9. Rustic / Earthy Theme</h2>
-            <div class="bg-stone-100 p-6 rounded-3xl border-4 border-amber-800 border-opacity-70 zaui-widget-container">
-                <p class="text-lg font-serif mb-3 text-amber-900">Adventure Awaits - Reserve Today</p>
-                <div class="zaui-widget-wrapper">
-                    <iframe id="zaui-widget-journey-iframe-9" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+            <!-- Design 4: Side Panel Quick Booking (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-4">
+                <h2 class="text-2xl font-bold text-gray-700">4. Side Panel Quick Booking</h2>
+                <div class="bg-gray-100 p-4 rounded-xl border-l-8 border-yellow-500 w-full max-w-sm mx-auto zaui-widget-container h-[650px]">
+                    <p class="text-sm font-light uppercase text-yellow-600 mb-2">Express Reservation</p>
+                    <div class="zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-4" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Design 10: High-Tech Console -->
-        <div class="space-y-4" id="design-10">
-            <h2 class="text-2xl font-semibold text-white">10. High-Tech Console</h2>
-            <div class="bg-gray-900 p-8 rounded-xl border border-teal-500 shadow-[0_0_15px_rgba(0,200,200,0.5)] zaui-widget-container">
-                <p class="text-xl font-mono mb-4 text-teal-400">STATUS: ACTIVE - START ROUTE PLANNING</p>
-                <div class="zaui-widget-wrapper border border-teal-500/50">
-                    <!-- Note: Adding defaultTheme=dark for better visual integration -->
-                    <iframe id="zaui-widget-journey-iframe-10" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+            <!-- Design 5: Minimalist Footer Block (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-5">
+                <h2 class="text-2xl font-bold text-gray-700">5. Minimalist Footer Block</h2>
+                <div class="border-t border-b border-gray-300 py-6 bg-white shadow-inner zaui-widget-container rounded-none h-[600px]">
+                    <p class="text-center text-sm mb-3 text-gray-500">Powered by Zaui | Find your trip below</p>
+                    <div class="zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-5" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <!-- Design 6: Premium Booking (Gradient Frame) (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-6">
+                <h2 class="text-2xl font-bold text-gray-700">6. Premium Booking Frame</h2>
+                <div class="p-1.5 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-xl shadow-xl">
+                    <div class="bg-white p-5 rounded-lg zaui-widget-container h-[600px]">
+                        <p class="text-xl font-extrabold mb-3 text-purple-700">VIP Transport Service</p>
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-6" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Design 7: Mobile First / Full Width Banner (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-7">
+                <h2 class="text-2xl font-bold text-gray-700">7. Full-Width Mobile Banner (Stretched)</h2>
+                <div class="bg-indigo-800 p-4 md:p-8 rounded-lg shadow-inner w-full zaui-widget-container h-[550px]">
+                    <p class="text-xl font-light text-white mb-4 text-center">Your Ride is Just a Tap Away.</p>
+                    <div class="zaui-widget-wrapper bg-white rounded-lg">
+                        <iframe id="zaui-widget-journey-iframe-7" class="zaui-widget rounded-lg" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 8: Stacked Form Context (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-8">
+                <h2 class="text-2xl font-bold text-gray-700">8. Stacked Form Context</h2>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-400/50">
+                    <p class="text-xl font-bold text-blue-800 mb-4">Step 2: Enter Details</p>
+                    <div class="border-b pb-4 mb-4">
+                        <p class="text-sm font-medium text-gray-500">Step 1: Destination Selected (Tokyo)</p>
+                    </div>
+                    <div class="zaui-widget-container h-[600px] rounded-lg">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-8" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                    <div class="pt-4 mt-4 border-t">
+                        <button disabled class="w-full bg-gray-300 text-gray-600 py-2 rounded-lg cursor-not-allowed font-semibold">Continue to Payment (Disabled)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 9: Rustic/Earthy Theme (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-9">
+                <h2 class="text-2xl font-bold text-gray-700">9. Rustic / Earthy Theme</h2>
+                <div class="bg-stone-100 rounded-3xl border-4 border-amber-800 border-opacity-70 shadow-inner">
+                    <img src="https://www.kootenayrockies.com/wp-content/uploads/2024/04/KRT_Revelstoke2023-41-scaled.jpg" alt="Revelstoke" class="card-header-image rounded-t-2xl">
+                    <div class="p-6 zaui-widget-container h-[600px]">
+                        <p class="text-lg font-serif mb-3 text-amber-900">Adventure Awaits - Reserve Today</p>
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-9" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 10: High-Tech Console (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-10">
+                <h2 class="text-2xl font-bold text-gray-700">10. High-Tech Console</h2>
+                <div class="bg-gray-900 p-8 rounded-xl border border-zaui-teal shadow-[0_0_15px_rgba(0,200,200,0.5)] zaui-widget-container h-[600px]">
+                    <p class="text-xl font-mono mb-4 text-zaui-teal">STATUS: ACTIVE - START ROUTE PLANNING</p>
+                    <div class="zaui-widget-wrapper border-2 border-zaui-teal/50">
+                        <iframe id="zaui-widget-journey-iframe-10" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 11: Tabbed Interface Context (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-11">
+                <h2 class="text-2xl font-bold text-gray-700">11. Tabbed Interface Context</h2>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <div class="flex border-b border-gray-200 mb-4">
+                        <button class="px-4 py-2 text-sm font-medium text-gray-500">Pricing</button>
+                        <button class="px-4 py-2 text-sm font-extrabold text-zaui-primary border-b-2 border-zaui-primary -mb-px">Book Now</button>
+                        <button class="px-4 py-2 text-sm font-medium text-gray-500">FAQ</button>
+                    </div>
+                    <div class="zaui-widget-container h-[600px] rounded-lg">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-11" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 12: Sticky Footer Bar Mockup (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-12">
+                <h2 class="text-2xl font-bold text-gray-700">12. Sticky Footer Bar Mockup</h2>
+                <div class="bg-zaui-primary p-3 rounded-xl shadow-2xl shadow-zaui-primary/50 zaui-widget-container h-[350px]">
+                    <p class="text-center text-white font-semibold mb-3">FIXED BOTTOM BAR (Scroll down to see the real effect)</p>
+                    <div class="zaui-widget-wrapper bg-white rounded-lg h-[300px]">
+                        <iframe id="zaui-widget-journey-iframe-12" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 13: Glassmorphism Card (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-13">
+                <h2 class="text-2xl font-bold text-gray-700">13. Glassmorphism Card</h2>
+                <div class="relative p-6 rounded-3xl border border-white/50 shadow-lg backdrop-blur-md bg-white/30 overflow-hidden zaui-widget-container h-[600px]">
+                    <div class="absolute inset-0 z-0 opacity-20" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdfdUgbJP3HtLJyC1dZj46s52jycR2qm3PZg&s'); background-size: cover;"></div>
+                    <p class="relative z-10 text-xl font-light mb-3 text-gray-800">Transparent & Modern</p>
+                    <div class="relative z-10 zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-13" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 14: Neon Glow Box (Dark) (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-14">
+                <h2 class="text-2xl font-bold text-gray-700">14. Neon Glow Box</h2>
+                <div class="bg-gray-900 p-6 rounded-xl border border-fuchsia-600 shadow-[0_0_20px_rgba(236,72,153,0.8)] zaui-widget-container h-[600px]">
+                    <p class="text-xl font-mono mb-3 text-fuchsia-400">ACTIVATED RESERVATION SYSTEM</p>
+                    <div class="zaui-widget-wrapper border border-fuchsia-600/50">
+                        <iframe id="zaui-widget-journey-iframe-14" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 15: Split Layout (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2" id="design-15">
+                <h2 class="text-2xl font-bold text-gray-700">15. Split Layout with Image Context</h2>
+                <div class="bg-white rounded-xl shadow-2xl grid md:grid-cols-2">
+                    <!-- Image Side -->
+                    <div class="h-[600px] md:h-auto bg-cover bg-center rounded-t-xl md:rounded-l-xl md:rounded-t-none" style="background-image: url('https://www.travelsandwandering.com/wp-content/uploads/2020/07/A-Rocky-Mountain-Road-Trip-Canada-jpg.webp');">
+                        <div class="p-6 h-full flex items-end">
+                            <p class="text-lg font-bold text-white bg-black/50 p-1 rounded">Explore the Rockies</p>
+                        </div>
+                    </div>
+                    <!-- Widget Side -->
+                    <div class="p-4 zaui-widget-container split-layout-height">
+                        <p class="text-xl font-extrabold text-gray-800 mb-2">Ready to Book?</p>
+                        <div class="zaui-widget-wrapper h-[90%]">
+                            <iframe id="zaui-widget-journey-iframe-15" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 16: Pricing Card Integration (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-16">
+                <h2 class="text-2xl font-bold text-gray-700">16. Pricing Card Integration</h2>
+                <div class="pricing-card-bg p-8 rounded-xl shadow-2xl border-4 border-zaui-primary/50">
+                    <p class="text-2xl font-black text-gray-900 mb-4 text-center">PREMIUM PACKAGE</p>
+                    <div class="zaui-widget-container h-[600px] bg-white rounded-lg p-2 shadow-inner">
+                        <p class="text-sm text-center text-gray-500 mb-2">Final step to secure this rate.</p>
+                        <div class="zaui-widget-wrapper h-[90%]">
+                            <iframe id="zaui-widget-journey-iframe-16" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 17: Simple Borderless Embed (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-17">
+                <h2 class="text-2xl font-bold text-gray-700">17. Simple Borderless Embed</h2>
+                <div class="bg-gray-100 p-0 zaui-widget-container rounded-none h-[600px]">
+                    <p class="text-lg font-medium mb-3 text-gray-400 border-b pb-2">Seamless Integration</p>
+                    <div class="zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-17" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 18: Animated Pulse Card (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-18">
+                <h2 class="text-2xl font-bold text-gray-700">18. Animated Pulse Card</h2>
+                <div class="bg-white p-6 rounded-xl border-4 border-zaui-primary pulse-card zaui-widget-container h-[600px]">
+                    <p class="text-xl font-extrabold mb-3 text-red-600">LIMITED TIME OFFER!</p>
+                    <div class="zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-18" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Design 19: Bubblegum Pop Card (HEIGHT ADJUSTED) -->
+            <div class="space-y-4" id="design-19">
+                <h2 class="text-2xl font-bold text-gray-700">19. Bubblegum Pop Card</h2>
+                <div class="bg-pink-100 p-8 rounded-[3rem] shadow-[10px_10px_0_0_#fda4af] border-2 border-pink-300 zaui-widget-container h-[600px]">
+                    <p class="text-2xl font-extrabold mb-3 text-pink-700 text-center">BOOK FUN!</p>
+                    <div class="zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-19" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 20: Scroll-Spy Focus Section (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-20">
+                <h2 class="text-2xl font-bold text-gray-700">20. Scroll-Spy Focus Section</h2>
+                <div class="bg-gray-800 p-10 rounded-xl shadow-inner w-full zaui-widget-container h-[650px]">
+                    <p class="text-3xl font-extrabold text-white mb-6 text-center">SECURE YOUR SPOT BELOW</p>
+                    <div class="zaui-widget-wrapper bg-white rounded-lg border-4 border-yellow-400">
+                        <iframe id="zaui-widget-journey-iframe-20" class="zaui-widget rounded-lg" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- === END SECTION 1 === -->
+
+
+            <!-- === NEW SECTION 2: FULL-WIDTH DESIGNS (ALL HEIGHT ADJUSTED) === -->
+            <h1 class="text-4xl font-extrabold mb-12 text-center text-gray-900 md:col-span-2 xl:col-span-3 pt-12 border-t-2 border-gray-300 mt-12">10 Full-Width Layout Examples</h1>
+
+            <!-- Design 21: Full-Width Hero Embed (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-21">
+                <h2 class="text-2xl font-bold text-gray-700">21. Full-Width Hero Embed</h2>
+                <div class="relative w-full h-[650px] rounded-xl shadow-2xl overflow-hidden">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/2141902450373351228" alt="Banff National Park" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <div class="relative z-10 p-10 flex flex-col items-center justify-center h-full">
+                        <h3 class="text-4xl font-extrabold text-white mb-6">Book Your Mountain Getaway</h3>
+                        <div class="w-full max-w-4xl zaui-widget-container h-[550px]">
+                            <div class="zaui-widget-wrapper">
+                                <iframe id="zaui-widget-journey-iframe-21" class="zaui-widget rounded-lg" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 22: Full-Width Dark Console (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-22">
+                <h2 class="text-2xl font-bold text-gray-700">22. Full-Width Dark Console</h2>
+                <div class="w-full p-8 md:p-12 rounded-xl shadow-2xl" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/7550320322654412835'); background-size: cover;">
+                    <h3 class="text-3xl font-mono text-cyan-400 mb-6">[BOOKING TERMINAL: ONLINE]</h3>
+                    <div class="zaui-widget-container h-[600px] border-4 border-cyan-400/50 rounded-lg">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-22" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 23: Full-Width Magazine Layout (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-23">
+                <h2 class="text-2xl font-bold text-gray-700">23. Full-Width Magazine Layout</h2>
+                <div class="w-full bg-white p-8 md:p-12 rounded-xl shadow-2xl flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Plan Your Perfect Trip</h3>
+                        <p class="text-gray-600 text-lg mb-4">Don't wait to book your next adventure. Our secure booking engine makes it easy to find and reserve your activities in minutes.</p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Instant Confirmation</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-lock text-blue-500"></i> Secure Payments</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-calendar-alt text-red-500"></i> Flexible Scheduling</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <div class="zaui-widget-container h-[600px]">
+                            <div class="zaui-widget-wrapper">
+                                <iframe id="zaui-widget-journey-iframe-23" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 24: Full-Width Minimalist (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-24">
+                <h2 class="text-2xl font-bold text-gray-700">24. Full-Width Minimalist</h2>
+                <div class="w-full bg-gray-100 p-8 md:p-12 rounded-xl shadow-inner">
+                    <h3 class="text-3xl font-light text-gray-800 mb-6 text-center">Reserve Your Transfer</h3>
+                    <div class="zaui-widget-container h-[600px]">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-24" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 25: Full-Width Luxury Theme (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-25">
+                <h2 class="text-2xl font-bold text-gray-700">25. Full-Width Luxury Theme</h2>
+                <div class="w-full p-8 md:p-12 rounded-xl shadow-2xl" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/5406314983171526508'); background-size: cover;">
+                    <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Exclusive Access Booking</h3>
+                    <div class="zaui-widget-container h-[600px] border-2 border-yellow-400/50 rounded-lg">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-25" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 26: Full-Width Eco/Green Theme (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-26">
+                <h2 class="text-2xl font-bold text-gray-700">26. Full-Width Eco/Green Theme</h2>
+                <div class="w-full p-8 md:p-12 rounded-xl shadow-2xl" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/449923717379308001'); background-size: cover;">
+                    <h3 class="text-3xl font-bold text-green-900 mb-6 text-center">Book Your Eco-Tour</h3>
+                    <div class="zaui-widget-container h-[600px] border-4 border-white/50 rounded-lg">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-26" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 27: Full-Width with Benefits (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-27">
+                <h2 class="text-2xl font-bold text-gray-700">27. Full-Width with Benefits</h2>
+                <div class="w-full bg-white p-8 md:p-12 rounded-xl shadow-2xl">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Why Book With Us?</h3>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1 w-full">
+                            <div class="zaui-widget-container h-[600px]">
+                                <div class="zaui-widget-wrapper">
+                                    <iframe id="zaui-widget-journey-iframe-27" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/3 space-y-6">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-shield-halved text-4xl text-zaui-primary"></i>
+                                <div>
+                                    <h4 class="text-xl font-bold">100% Secure</h4>
+                                    <p class="text-gray-600">SSL-encrypted payments.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-ticket text-4xl text-green-500"></i>
+                                <div>
+                                    <h4 class="text-xl font-bold">Instant E-Tickets</h4>
+                                    <p class="text-gray-600">Get your tickets right away.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-headset text-4xl text-red-500"></i>
+                                <div>
+                                    <h4 class="text-xl font-bold">24/7 Support</h4>
+                                    <p class="text-gray-600">We're here to help anytime.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 28: Full-Width Tabbed (Dark) (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-28">
+                <h2 class="text-2xl font-bold text-gray-700">28. Full-Width Tabbed (Dark)</h2>
+                <div class="bg-zaui-dark p-6 rounded-xl shadow-lg border border-gray-700">
+                    <div class="flex border-b border-gray-700 mb-4">
+                        <button class="px-4 py-2 text-sm font-medium text-gray-400">Details</button>
+                        <button class="px-4 py-2 text-sm font-extrabold text-white border-b-2 border-zaui-primary -mb-px">Book Your Tour</button>
+                        <button class="px-4 py-2 text-sm font-medium text-gray-400">Reviews</button>
+                    </div>
+                    <div class="zaui-widget-container h-[600px] rounded-lg">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-28" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 29: Full-Width Simple CTA (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-29">
+                <h2 class="text-2xl font-bold text-gray-700">29. Full-Width Simple CTA</h2>
+                <div class="w-full bg-gradient-to-r from-zaui-primary to-blue-600 p-8 md:p-12 rounded-xl shadow-2xl">
+                    <h3 class="text-3xl font-extrabold text-white mb-6 text-center">Ready to Go? Book Now!</h3>
+                    <div class="zaui-widget-container h-[600px]">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-29" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design 30: Full-Width Final Call to Action (HEIGHT ADJUSTED) -->
+            <div class="space-y-4 md:col-span-2 xl:col-span-3" id="design-30">
+                <h2 class="text-2xl font-bold text-gray-700">30. Full-Width Final CTA Block</h2>
+                <div class="w-full bg-yellow-300 p-8 md:p-12 rounded-xl shadow-2xl border-4 border-black">
+                    <h3 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">Don't Miss Out! Last Chance to Book!</h3>
+                    <div class="zaui-widget-container h-[600px] border-2 border-black rounded-lg">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-30" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
+    <!-- JavaScript for Design 3 (Modal functionality) -->
     <script>
-        // JavaScript for Design 3 (Modal functionality)
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('booking-modal');
-            modal.addEventListener('click', (e) => {
-                // Close modal if clicking outside the content box
-                if (e.target.id === 'booking-modal') {
-                    modal.style.display = 'none';
+        window.onload = function() {
+            try {
+                const modal = document.getElementById('booking-modal');
+                const openBtn = document.getElementById('open-booking-modal-btn');
+                const closeBtn = document.getElementById('close-booking-modal-btn');
+                
+                // Only attach listeners if all elements are found
+                if (modal && openBtn && closeBtn) {
+                    // 1. Open the modal
+                    openBtn.addEventListener('click', () => {
+                        modal.style.display = 'flex';
+                    });
+
+                    // 2. Close the modal using the 'X' button
+                    closeBtn.addEventListener('click', () => {
+                        modal.style.display = 'none';
+                    });
+
+                    // 3. Close the modal if the user clicks the dark overlay area
+                    modal.addEventListener('click', (e) => {
+                        // Check if the click target is the modal overlay itself, not the content
+                        if (e.target.id === 'booking-modal') {
+                            modal.style.display = 'none';
+                        }
+                    });
                 }
-            });
-        });
+            } catch (error) {
+                console.error("Error initializing modal functionality:", error);
+            }
+        };
     </script>
 </body>
 </html>
