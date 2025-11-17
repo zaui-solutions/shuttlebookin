@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaui Booking Options</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'zaui-primary': '#0070f3',
+                        'zaui-dark': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Zaui Embedded Booking API Script (Moved to head for better timing) -->
+    <script src="https://Zauishuttle.zaui.net/themes/default/js/zaui-embed-api-v1.js"></script>
+    <style>
+        /* Base styles for the iframe container */
+        .zaui-widget-container {
+            width: 100%;
+            height: 550px; /* Standard height for usability */
+            overflow: hidden;
+        }
+        .zaui-widget-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+        .zaui-widget {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Specific styles for design 3 (Modal) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        .modal-content {
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow: hidden;
+            background: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans p-6 md:p-10">
+
+    <h1 class="text-4xl font-bold mb-10 text-center text-gray-800">10 Distinct Zaui Booking Options</h1>
+
+    <!-- Grid Container for all designs -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
+
+        <!-- Design 1: Classic Elevated Card -->
+        <div class="space-y-4" id="design-1">
+            <h2 class="text-2xl font-semibold text-gray-700">1. Classic Elevated Card</h2>
+            <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-100 zaui-widget-container">
+                <p class="text-lg font-medium mb-3 text-zaui-primary">Book Your Shuttle Now</p>
+                <div class="zaui-widget-wrapper">
+                    <iframe id="zaui-widget-journey-iframe-1" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 2: Dark Mode Traveler -->
+        <div class="space-y-4" id="design-2">
+            <h2 class="text-2xl font-semibold text-white">2. Dark Mode Traveler</h2>
+            <div class="bg-zaui-dark p-6 rounded-xl shadow-[0_0_20px_rgba(0,112,243,0.7)] zaui-widget-container">
+                <p class="text-lg font-medium mb-3 text-green-400">Secure Travel Booking</p>
+                <div class="zaui-widget-wrapper">
+                    <iframe id="zaui-widget-journey-iframe-2" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 3: Floating Action Modal (Requires JS) -->
+        <div class="space-y-4" id="design-3">
+            <h2 class="text-2xl font-semibold text-gray-700">3. Floating Action Modal</h2>
+            <div class="bg-white p-6 rounded-xl shadow-lg h-[250px] flex flex-col justify-center items-center">
+                <p class="mb-4 text-gray-500">The widget is hidden and opens on click.</p>
+                <button onclick="document.getElementById('booking-modal').style.display='flex'" class="px-6 py-3 bg-red-600 text-white font-bold rounded-full shadow-lg hover:bg-red-700 transition transform hover:scale-105">
+                    START BOOKING
+                </button>
+            </div>
+            
+            <!-- Modal Structure (Hidden by default) -->
+            <div class="modal-overlay" id="booking-modal">
+                <div class="modal-content">
+                    <button onclick="document.getElementById('booking-modal').style.display='none'" class="absolute top-3 right-5 text-gray-700 hover:text-red-600 text-2xl font-bold z-10">&times;</button>
+                    <div class="zaui-widget-container h-[550px] w-full">
+                        <div class="zaui-widget-wrapper">
+                            <iframe id="zaui-widget-journey-iframe-3" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 4: Side Panel Quick Booking (Fixed Small Width) -->
+        <div class="space-y-4" id="design-4">
+            <h2 class="text-2xl font-semibold text-gray-700">4. Side Panel Quick Booking</h2>
+            <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-yellow-500 w-full max-w-sm mx-auto zaui-widget-container h-[600px]">
+                <p class="text-sm font-light uppercase text-yellow-600 mb-2">Express Reservation</p>
+                <div class="zaui-widget-wrapper">
+                    <iframe id="zaui-widget-journey-iframe-4" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 5: Minimalist Footer Block -->
+        <div class="space-y-4" id="design-5">
+            <h2 class="text-2xl font-semibold text-gray-700">5. Minimalist Footer Block</h2>
+            <div class="border-t border-b border-gray-300 py-6 zaui-widget-container">
+                <p class="text-center text-sm mb-3 text-gray-500">Powered by Zaui | Find your trip below</p>
+                <div class="zaui-widget-wrapper">
+                    <iframe id="zaui-widget-journey-iframe-5" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 6: Premium Booking (Gradient Frame) -->
+        <div class="space-y-4" id="design-6">
+            <h2 class="text-2xl font-semibold text-gray-700">6. Premium Booking Frame</h2>
+            <!-- Outer div for the custom gradient border -->
+            <div class="p-1.5 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-xl shadow-xl">
+                <!-- Inner div for the content -->
+                <div class="bg-white p-5 rounded-lg zaui-widget-container">
+                    <p class="text-lg font-bold mb-3 text-purple-700">VIP Transport Service</p>
+                    <div class="zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-6" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Design 7: Mobile First / Full Width Banner -->
+        <div class="space-y-4 lg:col-span-2 xl:col-span-3" id="design-7">
+            <h2 class="text-2xl font-semibold text-gray-700">7. Full-Width Mobile Banner</h2>
+            <div class="bg-indigo-700 p-4 md:p-8 rounded-lg shadow-inner w-full zaui-widget-container h-[450px]">
+                <p class="text-xl font-light text-white mb-4 text-center">Your Ride is Just a Tap Away.</p>
+                <div class="zaui-widget-wrapper bg-white rounded-lg">
+                    <iframe id="zaui-widget-journey-iframe-7" class="zaui-widget rounded-lg" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 8: Stacked Form Context -->
+        <div class="space-y-4" id="design-8">
+            <h2 class="text-2xl font-semibold text-gray-700">8. Stacked Form Context</h2>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-blue-200">
+                <p class="text-xl font-bold text-blue-800 mb-4">Step 2: Enter Details</p>
+                <!-- Mock Step 1 -->
+                <div class="border-b pb-4 mb-4">
+                    <p class="text-sm font-medium text-gray-500">Step 1: Destination Selected (Tokyo)</p>
+                </div>
+
+                <!-- Zaui Widget as Step 2 -->
+                <div class="zaui-widget-container h-[500px]">
+                    <div class="zaui-widget-wrapper">
+                        <iframe id="zaui-widget-journey-iframe-8" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Mock Step 3 -->
+                <div class="pt-4 mt-4 border-t">
+                    <button disabled class="w-full bg-gray-300 text-gray-600 py-2 rounded-lg cursor-not-allowed">Continue to Payment (Disabled)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 9: Rustic/Earthy Theme -->
+        <div class="space-y-4" id="design-9">
+            <h2 class="text-2xl font-semibold text-gray-700">9. Rustic / Earthy Theme</h2>
+            <div class="bg-stone-100 p-6 rounded-3xl border-4 border-amber-800 border-opacity-70 zaui-widget-container">
+                <p class="text-lg font-serif mb-3 text-amber-900">Adventure Awaits - Reserve Today</p>
+                <div class="zaui-widget-wrapper">
+                    <iframe id="zaui-widget-journey-iframe-9" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design 10: High-Tech Console -->
+        <div class="space-y-4" id="design-10">
+            <h2 class="text-2xl font-semibold text-white">10. High-Tech Console</h2>
+            <div class="bg-gray-900 p-8 rounded-xl border border-teal-500 shadow-[0_0_15px_rgba(0,200,200,0.5)] zaui-widget-container">
+                <p class="text-xl font-mono mb-4 text-teal-400">STATUS: ACTIVE - START ROUTE PLANNING</p>
+                <div class="zaui-widget-wrapper border border-teal-500/50">
+                    <!-- Note: Adding defaultTheme=dark for better visual integration -->
+                    <iframe id="zaui-widget-journey-iframe-10" class="zaui-widget" src="https://Zauishuttle.zaui.net/booking/web/#/default/widget/journey?embedStyle=embeddedframe&defaultTheme=dark" title="Journey Widget" frameBorder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // JavaScript for Design 3 (Modal functionality)
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('booking-modal');
+            modal.addEventListener('click', (e) => {
+                // Close modal if clicking outside the content box
+                if (e.target.id === 'booking-modal') {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
